@@ -1,7 +1,9 @@
 const express = require("express");
 require("dotenv").config();
-
-const User = require("./model/user");
+//DB
+require("./database").connect();
+//Model
+const { User } = require("./model");
 
 const app = express();
 
@@ -11,11 +13,11 @@ app.get("/", (req, res, next) => {
   res.send("Starter");
 });
 
-app.post("/register", (req, res, next) => {
+app.post("/register", async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
   if (firstName !== "" && lastName !== "" && email !== "" && password !== "") {
-    const existingUser = User.findOne({ email });
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
       res.status(401).send("User already exists");

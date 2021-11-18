@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const { DATABASE_NAME } = process.env;
+const COLLECTION_NAME = "users";
 
 const UserSchema = new mongoose.Schema({
   firstName: {
@@ -29,4 +29,4 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model(DATABASE_NAME, UserSchema);
+module.exports = mongoose.model(COLLECTION_NAME, UserSchema);
