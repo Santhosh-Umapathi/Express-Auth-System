@@ -30,7 +30,6 @@ app.post("/register", async (req, res, next) => {
       const existingUser = await User.findOne({ email });
 
       if (existingUser) {
-        console.log("🚀 --- app.post --- existingUser", existingUser);
         return res.status(401).send("User already exists");
       }
 
@@ -56,15 +55,14 @@ app.post("/register", async (req, res, next) => {
 
       user.token = token;
       user.password = undefined;
-      console.log("🚀 --- app.post --- user", user);
 
-      return res.status(201).json(user);
+      res.status(201).json(user);
     } else {
-      return res.status(400).send("All fields required");
+      res.status(400).send("All fields required");
     }
   } catch (error) {
     console.log("🚀 --- app.post --- error", error);
-    return res.status(400).send("Error Occured");
+    res.status(400).send("Error Occured");
   }
 });
 

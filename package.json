@@ -1,14 +1,18 @@
 {
   "name": "express-auth-system",
   "version": "1.0.0",
-  "description": "",
+  "description": "Authentication Model with Expresss Js",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "start": "node ./src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Express",
+    "Authentication",
+    "Authorization"
+  ],
+  "author": "Santhosh Umapathi",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
