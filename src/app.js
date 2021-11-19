@@ -6,6 +6,8 @@ require("dotenv").config();
 require("./database").connect();
 //Model
 const { User } = require("./model");
+//Middleware
+const { auth } = require("./middleware");
 
 const app = express();
 
@@ -108,6 +110,10 @@ app.post("/login", async (req, res, next) => {
     console.log("🚀 --- app.post --- error", error);
     res.status(400).send("Error Occured");
   }
+});
+
+app.get("/dashboard", auth, async (req, res, next) => {
+  res.send("Success to see dashboard");
 });
 
 module.exports = app;
