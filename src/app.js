@@ -1,6 +1,7 @@
 const express = require("express");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 //DB
 require("./database").connect();
@@ -12,6 +13,7 @@ const { auth } = require("./middleware");
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res, next) => {
   res.send("Starter");
@@ -100,7 +102,19 @@ app.post("/login", async (req, res, next) => {
       existingUser.token = token;
       existingUser.password = undefined;
 
-      res.status(200).json(existingUser);
+      //Cookies options
+      const options = {
+        expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), //3 days
+        httpOnly: true,
+      };
+
+      //Sending Cookies for token
+      res
+        .status(200)
+        .cookie("token", token, options)
+        .send("Cookies set for token");
+
+      // res.status(200).json(existingUser);
     } else {
       res.status(400).send("All fields required");
     }
