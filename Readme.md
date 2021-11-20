@@ -21,13 +21,10 @@ yarn dev
 Features included inside the project
 
 - Model
-- Schema
-- Controllers
-- Routes
-- Validations
 - Authentication, Protected Routes
-- Middlewares: JWT , File Upload
+- Middlewares: JWT
 - Password hashing
+- Cookie Parser
 - Mongoose, Mongo DB, Mongoose validators
 - ENV's
 
