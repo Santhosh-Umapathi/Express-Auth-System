@@ -28,4 +28,4 @@ Features included inside the project
 - Mongoose, Mongo DB, Mongoose validators
 - ENV's
 
-###### - App City @2021
+##### &copy; 2021 App City
